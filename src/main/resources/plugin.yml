@@ -1,0 +1,5 @@
+main: com.minegusta.portalspawn.Main
+version: ${project.version}
+author: janie177
+name: PortalSpawn
+softdepend: [WorldGuard]
