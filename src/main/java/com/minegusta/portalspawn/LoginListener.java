@@ -27,7 +27,7 @@ public class LoginListener implements Listener
         Location loginSpot = player.getLocation();
         Location spawn = player.getWorld().getSpawnLocation();
 
-        if(loginSpot.distance(spawn) < 150.0)
+        if(loginSpot.distance(spawn) < 170.0)
         {
             if(WG_ENABLED)
             {
