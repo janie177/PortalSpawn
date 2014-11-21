@@ -1,10 +1,8 @@
 package com.minegusta.portalspawn;
 
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
-import com.sk89q.worldguard.bukkit.listener.FlagStateManager;
 import com.sk89q.worldguard.protection.ApplicableRegionSet;
 import com.sk89q.worldguard.protection.flags.DefaultFlag;
-import com.sk89q.worldguard.protection.flags.Flag;
 import com.sk89q.worldguard.protection.flags.StateFlag;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import org.bukkit.Location;
@@ -29,7 +27,7 @@ public class LoginListener implements Listener
         Location loginSpot = player.getLocation();
         Location spawn = player.getWorld().getSpawnLocation();
 
-        if(loginSpot.distance(spawn) < 100.0)
+        if(loginSpot.distance(spawn) < 150.0)
         {
             if(WG_ENABLED)
             {
