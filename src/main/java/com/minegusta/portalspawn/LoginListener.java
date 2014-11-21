@@ -1,7 +1,12 @@
 package com.minegusta.portalspawn;
 
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
+import com.sk89q.worldguard.bukkit.listener.FlagStateManager;
 import com.sk89q.worldguard.protection.ApplicableRegionSet;
+import com.sk89q.worldguard.protection.flags.DefaultFlag;
+import com.sk89q.worldguard.protection.flags.Flag;
+import com.sk89q.worldguard.protection.flags.StateFlag;
+import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -31,7 +36,14 @@ public class LoginListener implements Listener
                 ApplicableRegionSet set = WorldGuardPlugin.inst().getRegionManager(player.getWorld()).getApplicableRegions(loginSpot);
                 if(set.size() > 0)
                 {
-                    player.teleport(spawn);
+                    for(ProtectedRegion r : set.getRegions())
+                    {
+                        if(r.getFlags().containsKey(DefaultFlag.PVP) && r.getFlag(DefaultFlag.PVP) == StateFlag.State.DENY)
+                        {
+                            player.teleport(spawn);
+                            break;
+                        }
+                    }
                 }
             }
             else
