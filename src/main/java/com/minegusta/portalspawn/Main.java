@@ -11,6 +11,10 @@ public class Main extends JavaPlugin
     @Override
     public void onEnable()
     {
+
+        //Set PLUGIN
+        PLUGIN = this;
+
         if(Bukkit.getPluginManager().isPluginEnabled("WorldGuard"))WG_ENABLED = true;
 
         ConfigManager.loadConfig();
@@ -23,9 +27,6 @@ public class Main extends JavaPlugin
                 Bukkit.getPluginManager().registerEvents(new TitleListener(), this);
             }
         }
-
-        //Set PLUGIN
-        PLUGIN = this;
     }
 
     public static Main getMain()
