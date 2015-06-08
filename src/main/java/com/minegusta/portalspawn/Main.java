@@ -13,6 +13,8 @@ public class Main extends JavaPlugin
     {
         if(Bukkit.getPluginManager().isPluginEnabled("WorldGuard"))WG_ENABLED = true;
 
+        ConfigManager.loadConfig();
+
         if(WG_ENABLED)
         {
             Bukkit.getPluginManager().registerEvents(new LoginListener(), this);
