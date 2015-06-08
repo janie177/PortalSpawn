@@ -22,7 +22,9 @@ public class Main extends JavaPlugin
         if(WG_ENABLED)
         {
             Bukkit.getPluginManager().registerEvents(new LoginListener(), this);
-            if(Bukkit.getPluginManager().isPluginEnabled("ChitChat"))
+
+
+            if(Bukkit.getPluginManager().isPluginEnabled("Chitchat"))
             {
                 Bukkit.getPluginManager().registerEvents(new TitleListener(), this);
             }
