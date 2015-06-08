@@ -14,8 +14,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 public class LoginListener implements Listener
 {
-
-    private static final boolean WG_ENABLED = Main.WG_ENABLED;
+    private static final boolean ENABLED = ConfigManager.getConfig().getBoolean("spawn-on-join", false);
+    private static final int DISTANCE = ConfigManager.getConfig().getInt("spawn-on-join-distance", 200);
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onLogin(PlayerJoinEvent e)
@@ -27,20 +27,17 @@ public class LoginListener implements Listener
         Location loginSpot = player.getLocation();
         Location spawn = player.getWorld().getSpawnLocation();
 
-        if(loginSpot.distance(spawn) < 170.0)
+        if(ENABLED && loginSpot.distance(spawn) < DISTANCE)
         {
-            if(WG_ENABLED)
+            ApplicableRegionSet set = WorldGuardPlugin.inst().getRegionManager(player.getWorld()).getApplicableRegions(loginSpot);
+            if(set.size() > 0)
             {
-                ApplicableRegionSet set = WorldGuardPlugin.inst().getRegionManager(player.getWorld()).getApplicableRegions(loginSpot);
-                if(set.size() > 0)
+                for(ProtectedRegion r : set.getRegions())
                 {
-                    for(ProtectedRegion r : set.getRegions())
+                    if(r.getFlags().containsKey(DefaultFlag.PVP) && r.getFlag(DefaultFlag.PVP) == StateFlag.State.DENY)
                     {
-                        if(r.getFlags().containsKey(DefaultFlag.PVP) && r.getFlag(DefaultFlag.PVP) == StateFlag.State.DENY)
-                        {
-                            player.teleport(spawn);
-                            break;
-                        }
+                        player.teleport(spawn);
+                        break;
                     }
                 }
             }
