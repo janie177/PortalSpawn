@@ -13,13 +13,9 @@ import org.bukkit.event.player.PlayerMoveEvent;
 
 public class TitleListener implements Listener {
 
-    private static boolean ENABLE = ConfigManager.getConfig().getBoolean("title-on-enter-region", false);
-
     @EventHandler
     public void onMove(PlayerMoveEvent e)
     {
-        if(!ENABLE) return;
-
         Location from = e.getFrom();
         Location to = e.getTo();
 

@@ -1,5 +1,6 @@
 spawn-on-join: true
 spawn-on-join-distance: 500
+reset-inv-on-join: false
 
 title-on-enter-region: false
 
