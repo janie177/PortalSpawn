@@ -21,9 +21,7 @@ public class Main extends JavaPlugin
 
         if(WG_ENABLED)
         {
-            boolean loginClear = ConfigManager.getConfig().getBoolean("reset-inv-on-join", false);
-
-            if(loginClear) Bukkit.getPluginManager().registerEvents(new LoginListener(), this);
+            Bukkit.getPluginManager().registerEvents(new LoginListener(), this);
 
 
             boolean titles = ConfigManager.getConfig().getBoolean("title-on-enter-region", false);
