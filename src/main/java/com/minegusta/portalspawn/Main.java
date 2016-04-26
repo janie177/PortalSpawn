@@ -22,14 +22,6 @@ public class Main extends JavaPlugin
         if(WG_ENABLED)
         {
             Bukkit.getPluginManager().registerEvents(new LoginListener(), this);
-
-
-            boolean titles = ConfigManager.getConfig().getBoolean("title-on-enter-region", false);
-
-            if(Bukkit.getPluginManager().isPluginEnabled("Chitchat") && titles)
-            {
-                Bukkit.getPluginManager().registerEvents(new TitleListener(), this);
-            }
         }
     }
 

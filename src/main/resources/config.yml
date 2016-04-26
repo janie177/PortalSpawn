@@ -1,12 +1,2 @@
 spawn-on-join: true
 spawn-on-join-distance: 500
-
-title-on-enter-region: false
-
-regions:
-   newhub:
-      title: '&4&lWasted'
-      subtitle: 'Kappa'
-      duration: 20
-      fade-in: 10
-      fade-out: 10
