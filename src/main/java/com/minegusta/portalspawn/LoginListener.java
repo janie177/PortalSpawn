@@ -41,10 +41,6 @@ public class LoginListener implements Listener
                     }
                 }
             }
-            else
-            {
-                player.teleport(spawn);
-            }
         }
 
     }
